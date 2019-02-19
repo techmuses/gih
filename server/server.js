@@ -5,23 +5,20 @@ const mysql      = require('mysql');
 const connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : '',
-  database : 'Company'
+  password : '123',
+  database : 'COMPANY'
 });
 
 // Initialize the app
 const app = express();
 
-// https://expressjs.com/en/guide/routing.html
-app.get('/posts', function (req, res) {
-    connection.connect();
+app.get('/data', function (req, res) {
 
-    connection.query('SELECT * FROM TABLE-NAME', function (error, results, fields) {
+    connection.query('SELECT * FROM ATTENDENCE', function (error, results, fields) {
       if (error) throw error;
       res.send(results)
     });
 
-    connection.end();
 });
 // Start the server
 app.listen(3000, () => {
